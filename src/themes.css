@@ -1,0 +1,198 @@
+/* Alaa themes for youtube-webos (GPL-3.0). Selectors use ytlr-* tags and substring class matches so YouTube renames degrade gracefully. */
+html[data-ytaf-theme='harak'] {
+  --t-bg: #0a0a0a;
+  --t-panel: #2d2236;
+  --t-raised: #3c2b45;
+  --t-accent: #e11d2e;
+  --t-tint: #3a1218;
+  --t-on: #f1eee6;
+  --t-glow: rgba(225, 29, 46, 0.55);
+  --t-muted: #b9aebf;
+}
+html[data-ytaf-theme='aya'] {
+  --t-bg: #241b2d;
+  --t-panel: #35263e;
+  --t-raised: #493352;
+  --t-accent: #ee9bc2;
+  --t-tint: #62415f;
+  --t-on: #fff2f8;
+  --t-glow: rgba(238, 155, 194, 0.55);
+  --t-muted: #c5adce;
+}
+html[data-ytaf-theme='velour'] {
+  --t-bg: #07060c;
+  --t-panel: #151022;
+  --t-raised: #1d1630;
+  --t-accent: #f2a48f;
+  --t-tint: #301b34;
+  --t-on: #1a0d14;
+  --t-glow: rgba(242, 164, 143, 0.6);
+  --t-muted: #b9abbb;
+}
+html[data-ytaf-theme] {
+  --t-text: #fbf3ee;
+}
+html[data-ytaf-theme='aya'] {
+  --t-text: #fff2f8;
+}
+html[data-ytaf-theme='harak'] {
+  --t-text: #f1eee6;
+}
+html[data-ytaf-theme] body {
+  background: var(--t-bg) !important;
+  color: var(--t-text);
+}
+html[data-ytaf-theme] ytlr-app,
+html[data-ytaf-theme] ytlr-browse-page,
+html[data-ytaf-theme] ytlr-tv-browse-page {
+  background:
+    radial-gradient(1200px 700px at 85% -10%, var(--t-tint), transparent 60%),
+    var(--t-bg) !important;
+}
+/* sidebar / guide */
+html[data-ytaf-theme] ytlr-guide-response,
+html[data-ytaf-theme] ytlr-guide-renderer,
+html[data-ytaf-theme] [class*='ytLrGuide'] {
+  background: linear-gradient(180deg, var(--t-panel), var(--t-bg)) !important;
+  border-inline-end: 1px solid var(--t-tint);
+}
+html[data-ytaf-theme] ytlr-guide-entry-renderer[class*='Focused'],
+html[data-ytaf-theme] ytlr-guide-entry-renderer:focus,
+html[data-ytaf-theme] [class*='GuideEntry'][class*='Focused'] {
+  background: var(--t-accent) !important;
+  color: var(--t-on) !important;
+  border-radius: 14px;
+}
+/* tiles / cards */
+html[data-ytaf-theme] ytlr-tile-renderer {
+  border-radius: 14px;
+  transition:
+    transform 0.22s cubic-bezier(0.2, 0.85, 0.2, 1),
+    box-shadow 0.22s;
+}
+html[data-ytaf-theme] ytlr-tile-renderer[class*='Focused'],
+html[data-ytaf-theme] ytlr-tile-renderer:focus,
+html[data-ytaf-theme] ytlr-tile-renderer:focus-within {
+  transform: scale(1.06);
+  box-shadow:
+    0 0 0 3px var(--t-accent),
+    0 12px 44px var(--t-glow);
+  z-index: 5;
+}
+html[data-ytaf-theme] ytlr-thumbnail-details,
+html[data-ytaf-theme] ytlr-tile-header-renderer {
+  border-radius: 14px;
+}
+html[data-ytaf-theme] ytlr-shelf-renderer h2,
+html[data-ytaf-theme] [class*='ShelfHeader'],
+html[data-ytaf-theme] [class*='shelfTitle'] {
+  color: var(--t-accent) !important;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+html[data-ytaf-theme] ytlr-chip-cloud-chip-renderer,
+html[data-ytaf-theme] ytlr-button-renderer,
+html[data-ytaf-theme] ytlr-toggle-button-renderer {
+  background: var(--t-raised) !important;
+  color: var(--t-text) !important;
+  border-radius: 999px;
+}
+html[data-ytaf-theme] ytlr-chip-cloud-chip-renderer[class*='Focused'],
+html[data-ytaf-theme] ytlr-button-renderer[class*='Focused'],
+html[data-ytaf-theme] ytlr-toggle-button-renderer[class*='Focused'],
+html[data-ytaf-theme] ytlr-button-renderer:focus {
+  background: var(--t-accent) !important;
+  color: var(--t-on) !important;
+  box-shadow: 0 0 28px var(--t-glow);
+}
+/* player: controls, progress, title */
+html[data-ytaf-theme] .ytLrWatchDefaultShadow,
+html[data-ytaf-theme] [idomkey='shadow'] {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    var(--t-bg) 100%
+  ) !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
+}
+html[data-ytaf-theme] ytlr-watch-metadata,
+html[data-ytaf-theme] ytlr-watch-title,
+html[data-ytaf-theme] [class*='WatchMetadata'] {
+  color: var(--t-text) !important;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+}
+html[data-ytaf-theme] ytlr-progress-bar,
+html[data-ytaf-theme] [class*='ProgressBar'] {
+  --yt-lr-progress: var(--t-accent);
+}
+html[data-ytaf-theme] [class*='ProgressBarPlayed'],
+html[data-ytaf-theme] [class*='progressBarPlayed'],
+html[data-ytaf-theme] [class*='ProgressBarProgress'] {
+  background: var(--t-accent) !important;
+  box-shadow: 0 0 14px var(--t-glow);
+}
+html[data-ytaf-theme] [class*='ProgressBarPlayhead'],
+html[data-ytaf-theme] [class*='ProgressBarHandle'],
+html[data-ytaf-theme] [class*='progressBarPlayhead'] {
+  background: var(--t-accent) !important;
+  box-shadow: 0 0 0 4px var(--t-glow);
+}
+html[data-ytaf-theme] ytlr-playback-controls [class*='Focused'],
+html[data-ytaf-theme] ytlr-player-controls [class*='Focused'],
+html[data-ytaf-theme] [class*='PlayerControl'][class*='Focused'] {
+  background: var(--t-accent) !important;
+  color: var(--t-on) !important;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3px var(--t-text),
+    0 0 30px var(--t-glow);
+}
+html[data-ytaf-theme] ytlr-playback-controls svg,
+html[data-ytaf-theme] ytlr-player-controls svg {
+  fill: currentColor;
+}
+/* mod UI: options panel + notifications */
+html[data-ytaf-theme] .ytaf-ui-container {
+  background: linear-gradient(160deg, var(--t-panel), var(--t-bg)) !important;
+  border: 1px solid var(--t-accent) !important;
+  box-shadow: 0 0 60px var(--t-glow);
+  color: var(--t-text) !important;
+  border-radius: 26px;
+}
+html[data-ytaf-theme] .ytaf-ui-container h1 {
+  color: var(--t-accent);
+}
+html[data-ytaf-theme] .ytaf-ui-container :focus {
+  outline: 3px solid var(--t-accent) !important;
+  background: var(--t-tint) !important;
+  border-radius: 10px;
+  box-shadow: 0 0 22px var(--t-glow);
+}
+html[data-ytaf-theme] .ytaf-ui-container input[type='checkbox'] {
+  accent-color: var(--t-accent);
+}
+html[data-ytaf-theme] .ytaf-ui-container .ytaf-theme-btn {
+  background: var(--t-raised);
+  color: var(--t-text);
+  border: 0;
+  border-radius: 12px;
+  padding: 0.35em 1em;
+  font: inherit;
+  font-weight: 700;
+  margin: 0.3em 0;
+}
+html[data-ytaf-theme] .ytaf-notification-container .message {
+  background: var(--t-panel);
+  color: var(--t-text);
+  border-radius: 12px;
+  border-right-color: var(--t-accent);
+}
+.ytaf-theme-btn {
+  background: #333;
+  color: #fff;
+  border: 0;
+  border-radius: 12px;
+  padding: 0.35em 1em;
+  font: inherit;
+  margin: 0.3em 0;
+}

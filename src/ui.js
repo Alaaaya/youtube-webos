@@ -7,6 +7,7 @@ import {
   configGetDesc
 } from './config.js';
 import './ui.css';
+import { createThemeButton } from './themes.js';
 import { requireElement } from './player_api/helpers';
 
 // We handle key events ourselves.
@@ -122,6 +123,7 @@ function createOptionsPanel() {
   elmHeading.textContent = 'webOS YouTube Extended';
   elmContainer.appendChild(elmHeading);
 
+  elmContainer.appendChild(createThemeButton());
   elmContainer.appendChild(createConfigCheckbox('enableAdBlock'));
   elmContainer.appendChild(createConfigCheckbox('upgradeThumbnails'));
   elmContainer.appendChild(createConfigCheckbox('hideLogo'));
