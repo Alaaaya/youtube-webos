@@ -43,87 +43,191 @@ html[data-ytaf-theme] body {
   color: var(--t-text);
 }
 html[data-ytaf-theme] ytlr-app,
-html[data-ytaf-theme] ytlr-browse-page,
-html[data-ytaf-theme] ytlr-tv-browse-page {
+
+/* ===== full restyle v0.6.1 ===== */
+html[data-ytaf-theme] {
+  --t-ring: linear-gradient(
+    135deg,
+    var(--t-accent),
+    var(--t-text),
+    var(--t-accent)
+  );
+}
+html[data-ytaf-theme] body {
+  background: var(--t-bg) !important;
+  color: var(--t-text);
+}
+html[data-ytaf-theme] ytlr-app {
+  color: var(--t-text);
+}
+/* background: ONLY the app-background layer, never the player stack */
+html[data-ytaf-theme]:not(.ytaf-watch) ytlr-app-background-container {
   background:
-    radial-gradient(1200px 700px at 85% -10%, var(--t-tint), transparent 60%),
-    var(--t-bg) !important;
+    radial-gradient(900px 600px at 82% -8%, var(--t-tint), transparent 62%),
+    radial-gradient(700px 520px at 6% 108%, var(--t-glow), transparent 70%),
+    radial-gradient(1400px 900px at 50% 50%, var(--t-panel), var(--t-bg) 78%) !important;
+  opacity: 1 !important;
 }
-/* sidebar / guide */
-html[data-ytaf-theme] ytlr-guide-response,
-html[data-ytaf-theme] ytlr-guide-renderer,
-html[data-ytaf-theme] [class*='ytLrGuide'] {
-  background: linear-gradient(180deg, var(--t-panel), var(--t-bg)) !important;
-  border-inline-end: 1px solid var(--t-tint);
+html[data-ytaf-theme].ytaf-watch ytlr-app-background-container,
+html[data-ytaf-theme].ytaf-watch ytlr-app,
+html[data-ytaf-theme].ytaf-watch ytlr-browse-page,
+html[data-ytaf-theme].ytaf-watch ytlr-tv-browse-page,
+html[data-ytaf-theme].ytaf-watch ytlr-surface {
+  background: transparent !important;
+  background-image: none !important;
 }
-html[data-ytaf-theme] ytlr-guide-entry-renderer[class*='Focused'],
+html[data-ytaf-theme].ytaf-watch body {
+  background: transparent !important;
+}
+html[data-ytaf-theme]:not(.ytaf-watch) body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+}
+/* header: logo + search */
+html[data-ytaf-theme] ytlr-logo-entity {
+  filter: drop-shadow(0 0 14px var(--t-glow));
+}
+html[data-ytaf-theme] ytlr-search-bar,
+html[data-ytaf-theme] ytlr-search-text-box,
+html[data-ytaf-theme] ytlr-search-box,
+html[data-ytaf-theme] ytlr-search-suggestions-renderer {
+  background: var(--t-raised) !important;
+  color: var(--t-text) !important;
+  border: 1px solid var(--t-tint) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+/* sidebar */
+html[data-ytaf-theme] ytlr-guide-response {
+  background: linear-gradient(
+    180deg,
+    var(--t-panel) 0%,
+    var(--t-bg) 100%
+  ) !important;
+  box-shadow:
+    0 0 60px rgba(0, 0, 0, 0.5),
+    inset -1px 0 0 var(--t-tint);
+}
+html[data-ytaf-theme] ytlr-guide-entry-renderer {
+  color: var(--t-muted) !important;
+  border-radius: 16px;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
 html[data-ytaf-theme] ytlr-guide-entry-renderer:focus,
-html[data-ytaf-theme] [class*='GuideEntry'][class*='Focused'] {
+html[data-ytaf-theme] ytlr-guide-entry-renderer:focus-within,
+html[data-ytaf-theme] ytlr-guide-entry-renderer.ytaf-focus {
   background: var(--t-accent) !important;
   color: var(--t-on) !important;
-  border-radius: 14px;
+  box-shadow: 0 6px 30px var(--t-glow);
 }
-/* tiles / cards */
-html[data-ytaf-theme] ytlr-tile-renderer {
-  border-radius: 14px;
-  transition:
-    transform 0.22s cubic-bezier(0.2, 0.85, 0.2, 1),
-    box-shadow 0.22s;
+html[data-ytaf-theme] ytlr-guide-entry-renderer yt-icon,
+html[data-ytaf-theme] ytlr-guide-entry-renderer yt-formatted-string {
+  color: inherit !important;
+  fill: currentColor !important;
 }
-html[data-ytaf-theme] ytlr-tile-renderer[class*='Focused'],
-html[data-ytaf-theme] ytlr-tile-renderer:focus,
-html[data-ytaf-theme] ytlr-tile-renderer:focus-within {
+/* buttons / chips / pills everywhere */
+html[data-ytaf-theme] ytlr-button,
+html[data-ytaf-theme] ytlr-button-renderer,
+html[data-ytaf-theme] ytlr-chip-cloud-chip-renderer,
+html[data-ytaf-theme] ytlr-toggle-button-renderer,
+html[data-ytaf-theme] ytlr-compact-link-renderer {
+  background-color: var(--t-raised) !important;
+  color: var(--t-text) !important;
+  border-radius: 18px !important;
+}
+html[data-ytaf-theme] ytlr-button:focus,
+html[data-ytaf-theme] ytlr-button-renderer:focus,
+html[data-ytaf-theme] ytlr-button-renderer:focus-within,
+html[data-ytaf-theme] ytlr-chip-cloud-chip-renderer:focus,
+html[data-ytaf-theme] ytlr-toggle-button-renderer:focus {
+  background-color: var(--t-accent) !important;
+  color: var(--t-on) !important;
+  box-shadow:
+    0 0 0 3px var(--t-text),
+    0 0 34px var(--t-glow);
   transform: scale(1.06);
+}
+/* cards: rounded media, glow ring, big scale on focus */
+html[data-ytaf-theme] ytlr-thumbnail-details,
+html[data-ytaf-theme] ytlr-thumbnail,
+html[data-ytaf-theme] [class*='thumbnail'] {
+  border-radius: 18px !important;
+  overflow: hidden;
+}
+html[data-ytaf-theme] ytlr-tile-renderer,
+html[data-ytaf-theme] ytlr-grid-video-renderer,
+html[data-ytaf-theme] ytlr-video-renderer,
+html[data-ytaf-theme] ytlr-compact-video-renderer,
+html[data-ytaf-theme] ytlr-rich-item-renderer,
+html[data-ytaf-theme] ytlr-lockup-view-model,
+html[data-ytaf-theme] ytlr-card-renderer {
+  border-radius: 20px;
+  transition:
+    transform 0.26s cubic-bezier(0.2, 0.85, 0.2, 1),
+    box-shadow 0.26s,
+    background 0.26s;
+}
+html[data-ytaf-theme] ytlr-tile-renderer:focus,
+html[data-ytaf-theme] ytlr-tile-renderer:focus-within,
+html[data-ytaf-theme] ytlr-grid-video-renderer:focus,
+html[data-ytaf-theme] ytlr-grid-video-renderer:focus-within,
+html[data-ytaf-theme] ytlr-video-renderer:focus-within,
+html[data-ytaf-theme] ytlr-compact-video-renderer:focus-within,
+html[data-ytaf-theme] ytlr-rich-item-renderer:focus-within,
+html[data-ytaf-theme] ytlr-lockup-view-model:focus-within,
+html[data-ytaf-theme] ytlr-card-renderer:focus-within {
+  transform: scale(1.07);
+  z-index: 5;
+  background: var(--t-raised);
   box-shadow:
     0 0 0 3px var(--t-accent),
-    0 12px 44px var(--t-glow);
-  z-index: 5;
+    0 0 0 7px var(--t-glow),
+    0 18px 60px rgba(0, 0, 0, 0.55);
 }
-html[data-ytaf-theme] ytlr-thumbnail-details,
-html[data-ytaf-theme] ytlr-tile-header-renderer {
-  border-radius: 14px;
-}
+/* section headings and text */
 html[data-ytaf-theme] ytlr-shelf-renderer h2,
-html[data-ytaf-theme] [class*='ShelfHeader'],
-html[data-ytaf-theme] [class*='shelfTitle'] {
+html[data-ytaf-theme] ytlr-shelf-header-renderer,
+html[data-ytaf-theme] ytlr-shelf-header-renderer yt-formatted-string,
+html[data-ytaf-theme] [class*='ShelfHeader'] {
   color: var(--t-accent) !important;
   font-weight: 800;
   letter-spacing: 0.02em;
+  text-shadow: 0 0 24px var(--t-glow);
 }
-html[data-ytaf-theme] ytlr-chip-cloud-chip-renderer,
-html[data-ytaf-theme] ytlr-button-renderer,
-html[data-ytaf-theme] ytlr-toggle-button-renderer {
-  background: var(--t-raised) !important;
-  color: var(--t-text) !important;
-  border-radius: 999px;
+html[data-ytaf-theme] ytlr-app yt-formatted-string {
+  color: inherit;
 }
-html[data-ytaf-theme] ytlr-chip-cloud-chip-renderer[class*='Focused'],
-html[data-ytaf-theme] ytlr-button-renderer[class*='Focused'],
-html[data-ytaf-theme] ytlr-toggle-button-renderer[class*='Focused'],
-html[data-ytaf-theme] ytlr-button-renderer:focus {
-  background: var(--t-accent) !important;
-  color: var(--t-on) !important;
-  box-shadow: 0 0 28px var(--t-glow);
+html[data-ytaf-theme]:not(.ytaf-watch) ytlr-app yt-formatted-string {
+  color: var(--t-text);
 }
-/* player: controls, progress, title */
-html[data-ytaf-theme] .ytLrWatchDefaultShadow,
-html[data-ytaf-theme] [idomkey='shadow'] {
-  background-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    var(--t-bg) 100%
-  ) !important;
-  background-color: rgba(0, 0, 0, 0.25) !important;
+html[data-ytaf-theme] ytlr-two-column-renderer,
+html[data-ytaf-theme] ytlr-welcome {
+  color: var(--t-text);
 }
-html[data-ytaf-theme] ytlr-watch-metadata,
-html[data-ytaf-theme] ytlr-watch-title,
-html[data-ytaf-theme] [class*='WatchMetadata'] {
-  color: var(--t-text) !important;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+html[data-ytaf-theme] ytlr-overlay-panel-renderer,
+html[data-ytaf-theme] ytlr-overlay-two-panel-renderer,
+html[data-ytaf-theme] ytlr-animated-overlay {
+  background: linear-gradient(160deg, var(--t-panel), var(--t-bg)) !important;
+  border-radius: 26px;
+  box-shadow: 0 0 80px var(--t-glow);
 }
-html[data-ytaf-theme] ytlr-progress-bar,
-html[data-ytaf-theme] [class*='ProgressBar'] {
-  --yt-lr-progress: var(--t-accent);
+/* player: video stays visible - only accents, no panels */
+html[data-ytaf-theme] ytlr-player-container,
+html[data-ytaf-theme] ytlr-player {
+  background: transparent !important;
+}
+html[data-ytaf-theme].ytaf-watch ytlr-button:not(:focus) {
+  background-color: rgba(30, 20, 40, 0.55) !important;
 }
 html[data-ytaf-theme] [class*='ProgressBarPlayed'],
 html[data-ytaf-theme] [class*='progressBarPlayed'],
@@ -132,26 +236,20 @@ html[data-ytaf-theme] [class*='ProgressBarProgress'] {
   box-shadow: 0 0 14px var(--t-glow);
 }
 html[data-ytaf-theme] [class*='ProgressBarPlayhead'],
-html[data-ytaf-theme] [class*='ProgressBarHandle'],
-html[data-ytaf-theme] [class*='progressBarPlayhead'] {
+html[data-ytaf-theme] [class*='ProgressBarHandle'] {
   background: var(--t-accent) !important;
-  box-shadow: 0 0 0 4px var(--t-glow);
+  box-shadow: 0 0 0 5px var(--t-glow);
 }
-html[data-ytaf-theme] ytlr-playback-controls [class*='Focused'],
-html[data-ytaf-theme] ytlr-player-controls [class*='Focused'],
-html[data-ytaf-theme] [class*='PlayerControl'][class*='Focused'] {
-  background: var(--t-accent) !important;
-  color: var(--t-on) !important;
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 3px var(--t-text),
-    0 0 30px var(--t-glow);
+/* generic focus ring for any other focused ytlr element */
+html[data-ytaf-theme]
+  ytlr-app
+  *:focus:not(ytlr-app):not(yt-focus-container):not(yt-focusable-container):not(
+    ytlr-tile-renderer
+  ) {
+  outline: 3px solid var(--t-accent);
+  outline-offset: 3px;
 }
-html[data-ytaf-theme] ytlr-playback-controls svg,
-html[data-ytaf-theme] ytlr-player-controls svg {
-  fill: currentColor;
-}
-/* mod UI: options panel + notifications */
+/* mod UI */
 html[data-ytaf-theme] .ytaf-ui-container {
   background: linear-gradient(160deg, var(--t-panel), var(--t-bg)) !important;
   border: 1px solid var(--t-accent) !important;
@@ -195,4 +293,19 @@ html[data-ytaf-theme] .ytaf-notification-container .message {
   padding: 0.35em 1em;
   font: inherit;
   margin: 0.3em 0;
+}
+/* debug overlay */
+#ytaf-debug {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  z-index: 99999;
+  max-width: 1100px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #0f0;
+  font: 16px/1.25 monospace;
+  padding: 8px 12px;
+  white-space: pre-wrap;
+  border-radius: 8px;
+  pointer-events: none;
 }

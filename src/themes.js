@@ -17,6 +17,62 @@ export function applyTheme(id) {
   }
 }
 
+function updateWatch() {
+  const w = /watch|[?&]v=/.test(location.hash + location.search);
+  document.documentElement.classList.toggle('ytaf-watch', w);
+}
+window.addEventListener('hashchange', updateWatch);
+setInterval(updateWatch, 1000);
+updateWatch();
+
+let dbgTimer = null;
+export function setDebug(on) {
+  let el = document.getElementById('ytaf-debug');
+  if (!on) {
+    clearInterval(dbgTimer);
+    dbgTimer = null;
+    if (el) el.remove();
+    return;
+  }
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'ytaf-debug';
+    document.body.appendChild(el);
+  }
+  dbgTimer = setInterval(() => {
+    const chain = [];
+    let n = document.activeElement;
+    while (n && n !== document.body && chain.length < 8) {
+      chain.push(
+        n.tagName.toLowerCase() +
+          '.' +
+          String(n.className || '')
+            .split(' ')
+            .slice(0, 3)
+            .join('.')
+      );
+      n = n.parentElement;
+    }
+    const tags = {};
+    document.querySelectorAll('*').forEach((e) => {
+      const t = e.tagName.toLowerCase();
+      if (t.startsWith('ytlr-')) tags[t] = 1;
+    });
+    const dump = {
+      hash: location.hash.slice(0, 40),
+      focus: chain,
+      tags: Object.keys(tags)
+    };
+    try {
+      localStorage.setItem('ytaf-dump', JSON.stringify(dump));
+    } catch {
+      /* ignore */
+    }
+    el.textContent =
+      'FOCUS: ' + chain.join(' < ') + '\nTAGS: ' + dump.tags.join(' ');
+  }, 1500);
+}
+
 export function createThemeButton() {
   const btn = document.createElement('button');
   btn.className = 'ytaf-theme-btn';
@@ -33,7 +89,20 @@ export function createThemeButton() {
     label();
   });
   label();
-  return btn;
+  const wrap = document.createElement('div');
+  wrap.appendChild(btn);
+  const dbg = document.createElement('button');
+  dbg.className = 'ytaf-theme-btn';
+  let on = false;
+  dbg.textContent = 'Debug overlay: OFF (OK to toggle)';
+  dbg.addEventListener('click', () => {
+    on = !on;
+    setDebug(on);
+    dbg.textContent =
+      'Debug overlay: ' + (on ? 'ON' : 'OFF') + ' (OK to toggle)';
+  });
+  wrap.appendChild(dbg);
+  return wrap;
 }
 
 applyTheme(configRead('uiTheme'));
