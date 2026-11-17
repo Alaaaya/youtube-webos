@@ -136,8 +136,6 @@ html[data-ytaf-theme] ytlr-guide-entry-renderer yt-formatted-string {
   fill: currentColor !important;
 }
 /* buttons / chips / pills everywhere */
-html[data-ytaf-theme] ytlr-button,
-html[data-ytaf-theme] ytlr-button-renderer,
 html[data-ytaf-theme] ytlr-chip-cloud-chip-renderer,
 html[data-ytaf-theme] ytlr-toggle-button-renderer,
 html[data-ytaf-theme] ytlr-compact-link-renderer {
@@ -145,9 +143,6 @@ html[data-ytaf-theme] ytlr-compact-link-renderer {
   color: var(--t-text) !important;
   border-radius: 18px !important;
 }
-html[data-ytaf-theme] ytlr-button:focus,
-html[data-ytaf-theme] ytlr-button-renderer:focus,
-html[data-ytaf-theme] ytlr-button-renderer:focus-within,
 html[data-ytaf-theme] ytlr-chip-cloud-chip-renderer:focus,
 html[data-ytaf-theme] ytlr-toggle-button-renderer:focus {
   background-color: var(--t-accent) !important;
@@ -224,9 +219,6 @@ html[data-ytaf-theme] ytlr-animated-overlay {
 html[data-ytaf-theme] ytlr-player-container,
 html[data-ytaf-theme] ytlr-player {
   background: transparent !important;
-}
-html[data-ytaf-theme].ytaf-watch ytlr-button:not(:focus) {
-  background-color: rgba(30, 20, 40, 0.55) !important;
 }
 html[data-ytaf-theme] [class*='ProgressBarPlayed'],
 html[data-ytaf-theme] [class*='progressBarPlayed'],
@@ -444,4 +436,22 @@ html[data-ytaf-theme] ytlr-tile-renderer *:focus {
 }
 html[data-ytaf-theme] ytlr-tile-metadata-renderer {
   background: transparent !important;
+}
+
+/* v0.6.5 sidebar: one pill, readable text */
+html[data-ytaf-theme] ytlr-guide-entry-renderer *,
+html[data-ytaf-theme] ytlr-guide-account-entry-renderer * {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+html[data-ytaf-theme] ytlr-guide-entry-renderer {
+  color: var(--t-text) !important;
+}
+html[data-ytaf-theme] ytlr-guide-entry-renderer:focus,
+html[data-ytaf-theme] ytlr-guide-entry-renderer:focus-within,
+html[data-ytaf-theme] ytlr-guide-entry-renderer:focus *,
+html[data-ytaf-theme] ytlr-guide-entry-renderer:focus-within * {
+  color: var(--t-on) !important;
+  fill: var(--t-on) !important;
 }
