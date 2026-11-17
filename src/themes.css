@@ -188,7 +188,6 @@ html[data-ytaf-theme] ytlr-lockup-view-model:focus-within,
 html[data-ytaf-theme] ytlr-card-renderer:focus-within {
   transform: scale(1.07);
   z-index: 5;
-  background: var(--t-raised);
   box-shadow:
     0 0 0 3px var(--t-accent),
     0 0 0 7px var(--t-glow),
@@ -340,12 +339,10 @@ html[data-ytaf-theme] ytlr-shelf-renderer {
 /* cards: rounded, accent title, focus glow */
 html[data-ytaf-theme] ytlr-tile-renderer {
   border-radius: 18px !important;
-  background: var(--t-panel) !important;
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45) !important;
 }
 html[data-ytaf-theme] ytlr-tile-renderer:focus-within,
 html[data-ytaf-theme] ytlr-tile-renderer:focus {
-  background: var(--t-raised) !important;
   box-shadow:
     0 0 0 4px var(--t-accent),
     0 0 46px var(--t-glow) !important;
@@ -364,15 +361,12 @@ html[data-ytaf-theme] ytlr-tile-metadata-renderer ytlr-line * {
   color: var(--t-muted) !important;
 }
 html[data-ytaf-theme] ytlr-thumbnail-overlay-time-status-renderer {
-  background: var(--t-accent) !important;
   color: var(--t-on) !important;
   border-radius: 8px !important;
 }
 /* inline playback preview must never be a solid box */
 html[data-ytaf-theme] ytlr-playback-preview,
 html[data-ytaf-theme] ytlr-playback-preview * {
-  background: transparent !important;
-  background-color: transparent !important;
 }
 /* header / search */
 html[data-ytaf-theme] ytlr-search-bar {
@@ -402,7 +396,6 @@ html[data-ytaf-theme] ytlr-legend * {
 html[data-ytaf-theme] ytlr-guide-account-entry-renderer,
 html[data-ytaf-theme] ytlr-avatar-lockup,
 html[data-ytaf-theme] ytlr-avatar-lockup-renderer {
-  background: var(--t-raised) !important;
   border-radius: 22px !important;
 }
 /* watch page: only readable text + accents, video untouched */
