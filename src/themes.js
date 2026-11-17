@@ -91,17 +91,6 @@ export function createThemeButton() {
   label();
   const wrap = document.createElement('div');
   wrap.appendChild(btn);
-  const dbg = document.createElement('button');
-  dbg.className = 'ytaf-theme-btn';
-  let on = false;
-  dbg.textContent = 'Debug overlay: OFF (OK to toggle)';
-  dbg.addEventListener('click', () => {
-    on = !on;
-    setDebug(on);
-    dbg.textContent =
-      'Debug overlay: ' + (on ? 'ON' : 'OFF') + ' (OK to toggle)';
-  });
-  wrap.appendChild(dbg);
   return wrap;
 }
 

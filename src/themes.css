@@ -309,3 +309,146 @@ html[data-ytaf-theme] .ytaf-notification-container .message {
   border-radius: 8px;
   pointer-events: none;
 }
+
+/* ===== v0.6.4 real-DOM pass (tags from owner TV dumps) ===== */
+html[data-ytaf-theme]:not(.ytaf-watch) ytlr-surface-page,
+html[data-ytaf-theme]:not(.ytaf-watch) ytlr-tv-browse-renderer,
+html[data-ytaf-theme]:not(.ytaf-watch) ytlr-tv-surface-content-renderer,
+html[data-ytaf-theme]:not(.ytaf-watch) ytlr-section-list-renderer,
+html[data-ytaf-theme]:not(.ytaf-watch) ytlr-ghost-surface,
+html[data-ytaf-theme]:not(.ytaf-watch) ytlr-ghost-box {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+html[data-ytaf-theme] ytlr-shelf-header,
+html[data-ytaf-theme] ytlr-shelf-header * {
+  color: var(--t-accent) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+}
+html[data-ytaf-theme] ytlr-shelf-renderer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--t-tint) 50%,
+    transparent
+  ) !important;
+  background-size: 100% 2px !important;
+  background-repeat: no-repeat !important;
+  background-position: 0 0 !important;
+}
+/* cards: rounded, accent title, focus glow */
+html[data-ytaf-theme] ytlr-tile-renderer {
+  border-radius: 18px !important;
+  background: var(--t-panel) !important;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45) !important;
+}
+html[data-ytaf-theme] ytlr-tile-renderer:focus-within,
+html[data-ytaf-theme] ytlr-tile-renderer:focus {
+  background: var(--t-raised) !important;
+  box-shadow:
+    0 0 0 4px var(--t-accent),
+    0 0 46px var(--t-glow) !important;
+}
+html[data-ytaf-theme] ytlr-tile-header-renderer,
+html[data-ytaf-theme] ytlr-thumbnail-details {
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+html[data-ytaf-theme] ytlr-tile-metadata-renderer,
+html[data-ytaf-theme] ytlr-tile-metadata-renderer * {
+  color: var(--t-text) !important;
+}
+html[data-ytaf-theme] ytlr-tile-metadata-renderer ytlr-line,
+html[data-ytaf-theme] ytlr-tile-metadata-renderer ytlr-line * {
+  color: var(--t-muted) !important;
+}
+html[data-ytaf-theme] ytlr-thumbnail-overlay-time-status-renderer {
+  background: var(--t-accent) !important;
+  color: var(--t-on) !important;
+  border-radius: 8px !important;
+}
+/* inline playback preview must never be a solid box */
+html[data-ytaf-theme] ytlr-playback-preview,
+html[data-ytaf-theme] ytlr-playback-preview * {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+/* header / search */
+html[data-ytaf-theme] ytlr-search-bar {
+  background: var(--t-panel) !important;
+  border: 2px solid var(--t-tint) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 0 26px var(--t-glow);
+}
+html[data-ytaf-theme] ytlr-search-bar:focus-within {
+  border-color: var(--t-accent) !important;
+}
+html[data-ytaf-theme] ytlr-search-text-box,
+html[data-ytaf-theme] ytlr-text-box,
+html[data-ytaf-theme] ytlr-search-text-box * {
+  background: transparent !important;
+  color: var(--t-text) !important;
+}
+html[data-ytaf-theme] ytlr-search-voice-mic-button {
+  background: var(--t-accent) !important;
+  color: var(--t-on) !important;
+  border-radius: 50% !important;
+}
+html[data-ytaf-theme] ytlr-legend,
+html[data-ytaf-theme] ytlr-legend * {
+  color: var(--t-muted) !important;
+}
+html[data-ytaf-theme] ytlr-guide-account-entry-renderer,
+html[data-ytaf-theme] ytlr-avatar-lockup,
+html[data-ytaf-theme] ytlr-avatar-lockup-renderer {
+  background: var(--t-raised) !important;
+  border-radius: 22px !important;
+}
+/* watch page: only readable text + accents, video untouched */
+html[data-ytaf-theme] ytlr-watch-metadata,
+html[data-ytaf-theme] ytlr-video-title-tray,
+html[data-ytaf-theme] ytlr-video-metadata-line,
+html[data-ytaf-theme] ytlr-time-counter {
+  background: transparent !important;
+  color: var(--t-text) !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
+html[data-ytaf-theme] ytlr-video-title-tray * {
+  color: var(--t-text) !important;
+}
+html[data-ytaf-theme] ytlr-watch-default,
+html[data-ytaf-theme] ytlr-watch-page,
+html[data-ytaf-theme] ytlr-squeezeback,
+html[data-ytaf-theme] ytlr-squeezeback-overlay-helper {
+  background-color: transparent !important;
+}
+html[data-ytaf-theme] ytlr-player-actions-container ytlr-button-renderer,
+html[data-ytaf-theme] ytlr-captions-button,
+html[data-ytaf-theme] ytlr-like-button-renderer,
+html[data-ytaf-theme] ytlr-subscribe-button-renderer {
+  background: rgba(20, 14, 28, 0.55) !important;
+  border-radius: 30px !important;
+}
+html[data-ytaf-theme]
+  ytlr-player-actions-container
+  ytlr-button-renderer:focus-within,
+html[data-ytaf-theme] ytlr-subscribe-button-renderer:focus-within,
+html[data-ytaf-theme] ytlr-like-button-renderer:focus-within {
+  background: var(--t-accent) !important;
+  color: var(--t-on) !important;
+  box-shadow: 0 0 30px var(--t-glow);
+}
+html[data-ytaf-theme] ytlr-playhead {
+  background: var(--t-accent) !important;
+  box-shadow: 0 0 0 5px var(--t-glow);
+}
+html[data-ytaf-theme] ytlr-tile-renderer:focus-within,
+html[data-ytaf-theme] ytlr-tile-renderer:focus,
+html[data-ytaf-theme] ytlr-tile-renderer *:focus {
+  outline: none !important;
+  border-color: transparent !important;
+}
+html[data-ytaf-theme] ytlr-tile-metadata-renderer {
+  background: transparent !important;
+}
